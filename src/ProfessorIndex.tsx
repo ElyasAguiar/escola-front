@@ -8,14 +8,22 @@ import Message from './Message';
 import { RouteComponentProps, Link } from '@reach/router';
 const axios = require('axios').default;
 
-type Titulo = { id_titulo: String; tx_descricao: String };
-type GetTituloResponse = { data: { data: Titulo[] } };
+type Professor = {
+  id_professor: Number;
+  id_titulo: Number;
+  tx_nome: String;
+  tx_sexo: String;
+  tx_estado_civil: String;
+  dt_nascimento: String;
+  tx_telefone: String;
+};
+type GetProfessorResponse = { data: { data: Professor[] } };
 
 interface TProps extends RouteComponentProps {
   url?: string;
 }
 
-export default function TituloIndex(props: TProps) {
+export default function ProfessorIndex(props: TProps) {
   const [url] = useState(props.url);
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any[]>([]);
@@ -78,14 +86,26 @@ export default function TituloIndex(props: TProps) {
   const columns = [
     {
       // headerStyle: { backgroundColor: '#215E95', color: 'white', borderRadius:'25px', border:'0px'},
-      dataField: 'id_titulo',
+      dataField: 'id_professor',
       text: 'Código',
       sort: true,
     },
     {
       // headerStyle: { backgroundColor: '#215E95', color: 'white', borderRadius:'25px', border:'0px'},
-      dataField: 'tx_descricao',
-      text: 'Descrição',
+      dataField: 'tx_nome',
+      text: 'Nome',
+      sort: true,
+    },
+    {
+      // headerStyle: { backgroundColor: '#215E95', color: 'white', borderRadius:'25px', border:'0px'},
+      dataField: 'dt_nascimento',
+      text: 'Data de Nascimento',
+      sort: true,
+    },
+    {
+      // headerStyle: { backgroundColor: '#215E95', color: 'white', borderRadius:'25px', border:'0px'},
+      dataField: 'tx_telefone',
+      text: 'Telefone',
       sort: true,
     },
     {
@@ -93,7 +113,7 @@ export default function TituloIndex(props: TProps) {
       isDummyField: true,
       text: 'Alterar',
       formatter: (cellContent: any, row: any) => (
-        <Link to={'/editTitulo/edit/' + row.id_titulo} title='ALTERAR'>
+        <Link to={'/editProfessor/edit/' + row.id_professor} title='ALTERAR'>
           <Icon
             icon='dashicons:edit-large'
             color='orange'
@@ -104,7 +124,7 @@ export default function TituloIndex(props: TProps) {
       ),
     },
     {
-      dataField: 'id_titulo',
+      dataField: 'id_professor',
       isDummyField: true,
       text: 'Excluir',
       formatter: (cellContent: any, row: any) => (
@@ -125,7 +145,7 @@ export default function TituloIndex(props: TProps) {
             onClick={() => {
               const excluir = window.confirm('Excluir?');
               if (excluir) {
-                deleteRow(String(row.id_titulo));
+                deleteRow(String(row.id_professor));
               }
             }}
           />
@@ -140,7 +160,7 @@ export default function TituloIndex(props: TProps) {
 
       await axios
         .get(props.url)
-        .then((res: GetTituloResponse) => {
+        .then((res: GetProfessorResponse) => {
           setData(res.data.data);
           setLoading(false);
         })
@@ -164,9 +184,9 @@ export default function TituloIndex(props: TProps) {
     return (
       <>
         <GlobalStyle />
-        <STitle color='purple'> CRUD TÍTULO </STitle>
+        <STitle color='purple'> CRUD PROFESSOR </STitle>
         <SForm>
-          <STitle> Títulos </STitle>
+          <STitle> Professores </STitle>
           <div style={{ width: '100%' }}>
             {' '}
             {/* Alinha */}
@@ -174,7 +194,7 @@ export default function TituloIndex(props: TProps) {
               striped
               bordered={true}
               hover
-              keyField='id_titulo'
+              keyField='id_professor'
               data={data}
               columns={columns}
               rowStyle={{
@@ -196,7 +216,7 @@ export default function TituloIndex(props: TProps) {
             }}
             title='NOVO'
           >
-            <Link to={'/editTitulo/new'}>
+            <Link to={'/editProfessor/new'}>
               <Icon
                 icon='fluent:add-circle-24-filled'
                 width='50'
