@@ -1,0 +1,5 @@
+{
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": "file:///Users/elyassantana/Projetos/DevNoob/reactjs_exerc__crud_titulo_from_rest/.github/workflows/deploy.yml"
+  }
+}
