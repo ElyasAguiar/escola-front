@@ -9,12 +9,19 @@ import { Router } from '@reach/router';
 const App = () => (
   <div>
     <Router>
-      <TituloIndex path='/' url={'http://127.0.0.1:8000/start_point/titulo'} />
+      <TituloIndex
+        path='/'
+        url={
+          'https://escola-api.caprover.programadornoob.io/start_point/titulo'
+        }
+      />
       <TituloEdit path='/editTitulo/:action' />
       <TituloEdit path='/editTitulo/:action/:id' />
       <ProfessorIndex
         path='/professor/'
-        url={'http://127.0.0.1:8000/start_point/professor'}
+        url={
+          'https://escola-api.caprover.programadornoob.io/start_point/professor'
+        }
       />
       <ProfessorEdit path='/editProfessor/:action' />
       <ProfessorEdit path='/editProfessor/:action/:id' />
