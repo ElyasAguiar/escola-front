@@ -54,7 +54,7 @@ export default function ProfessorEdit(props: TProps) {
   const [dtDataNascimento, setDtDataNascimento] = useState('');
   const [txTelefone, setTxTelefone] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(action == 'new' ? false : true);
+  const [loading, setLoading] = useState(action === 'new' ? false : true);
 
   useEffect(() => {
     async function getTitulo() {
@@ -74,8 +74,8 @@ export default function ProfessorEdit(props: TProps) {
         });
     }
 
-    if (action == 'edit') getTitulo();
-  }, []);
+    if (action === 'edit') getTitulo();
+  });
 
   async function handleClick() {
     type TProfessor = {

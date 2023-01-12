@@ -50,8 +50,7 @@ const Debug = (props: TProps) => {
   );
 };
 
-{
-  /*
+/*
                     USO:
 
  Parametrizando apenas um objeto literal:
@@ -63,6 +62,5 @@ const Debug = (props: TProps) => {
  Combinando propriedades de dois objetos literais:
  <Debug active={true} content={{...state, ...error}}/>  
 */
-}
 
 export default Debug;
