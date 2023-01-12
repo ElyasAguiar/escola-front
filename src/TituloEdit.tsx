@@ -41,7 +41,7 @@ export default function TituloEdit(props: TProps) {
   const { id, action } = props;
   const [txDescricao, setTxDescricao] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(action == 'new' ? false : true);
+  const [loading, setLoading] = useState(action === 'new' ? false : true);
 
   useEffect(() => {
     async function getTitulo() {
@@ -56,7 +56,7 @@ export default function TituloEdit(props: TProps) {
         });
     }
 
-    if (action == 'edit') getTitulo();
+    if (action === 'edit') getTitulo();
   }, []);
 
   async function handleClick() {

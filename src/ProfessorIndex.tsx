@@ -156,7 +156,7 @@ export default function ProfessorIndex(props: TProps) {
 
   useEffect(() => {
     async function getLines() {
-      let lines: JSX.Element[] = [];
+      // let lines: JSX.Element[] = [];
 
       await axios
         .get(props.url)
