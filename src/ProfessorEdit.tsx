@@ -44,7 +44,8 @@ export default function ProfessorEdit(props: TProps) {
   }, [escFunction]);
   // TRATANDO RETORNO COM ESC -- TÉRMINO
 
-  const url = 'http://127.0.0.1:8000/start_point/professor/';
+  const url =
+    'https://escola-api.caprover.programadornoob.io/start_point/professor/';
   const { id, action } = props;
   const [txNome, setTxNome] = useState('');
   const [txTitulo, setTxTitulo] = useState('');
