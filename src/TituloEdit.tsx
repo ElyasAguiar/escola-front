@@ -25,7 +25,7 @@ export default function TituloEdit(props: TProps) {
     if (event.keyCode === 27)
       // ESC Code
       navigate('/');
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     document.addEventListener('keydown', escFunction, false);
@@ -57,7 +57,7 @@ export default function TituloEdit(props: TProps) {
     }
 
     if (action === 'edit') getTitulo();
-  }, []);
+  }, [action, id]);
 
   async function handleClick() {
     type TTitulo = {

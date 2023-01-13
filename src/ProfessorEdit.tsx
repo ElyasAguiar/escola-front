@@ -33,7 +33,7 @@ export default function ProfessorEdit(props: TProps) {
     if (event.keyCode === 27)
       // ESC Code
       navigate('/');
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     document.addEventListener('keydown', escFunction, false);
