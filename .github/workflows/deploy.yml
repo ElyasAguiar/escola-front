@@ -2,9 +2,10 @@ name: deploy
 
 on:
   push:
-    branches:
-      - ["main", "dev"]
+    branches: ["main", "dev"]
 
+  pull_request:
+    branches: ["main", "dev"]
 jobs:
   deploy:
     runs-on: ubuntu-18.04
