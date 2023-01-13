@@ -136,7 +136,7 @@ export default function TituloIndex(props: TProps) {
 
   useEffect(() => {
     async function getLines() {
-      let lines: JSX.Element[] = [];
+     // let lines: JSX.Element[] = [];
 
       await axios
         .get(props.url)
@@ -150,7 +150,7 @@ export default function TituloIndex(props: TProps) {
     }
 
     getLines();
-  }, [loading]);
+  }, [loading, props.url]);
 
   if (loading)
     return (

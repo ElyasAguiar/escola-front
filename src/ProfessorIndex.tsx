@@ -170,7 +170,7 @@ export default function ProfessorIndex(props: TProps) {
     }
 
     getLines();
-  }, [loading]);
+  }, [loading, props.url]);
 
   if (loading)
     return (
