@@ -12,7 +12,7 @@ COPY . ./
 RUN npm run build
 
 # production environment
-FROM nginx:stable-alpine
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 3000
-CMD ["nginx", "-g", "daemon off;"]
+FROM socialengine/nginx-spa:latest
+COPY ./build /app"
+RUN chmod -R 777 /app"
+# CMD ["nginx", "-g", "daemon off;"]
