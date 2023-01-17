@@ -7,6 +7,8 @@ COPY ./ /app
 
 RUN npm install && npm run build
 
-FROM nginx:stable-alpine
+FROM --platform=linux/amd64 socialengine/nginx-spa:latest
 
 COPY --from=build /app/build /app
+
+RUN chmod -R 777 /app
