@@ -105,7 +105,7 @@ export default function ProfessorEdit(props: TProps) {
     if (action === 'new') {
       await axios
         .post(
-          'http://escola-api.caprover.programadornoob.io/start_point/professor',
+          'https://escola-api.caprover.programadornoob.io/start_point/professor',
           professor
         )
         .then((res: InsertResponse) => {

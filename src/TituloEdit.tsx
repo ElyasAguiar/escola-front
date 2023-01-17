@@ -77,7 +77,7 @@ export default function TituloEdit(props: TProps) {
     if (action === 'new') {
       await axios
         .post(
-          'http://escola-api.caprover.programadornoob.io/start_point/titulo',
+          'https://escola-api.caprover.programadornoob.io/start_point/titulo',
           { tx_descricao: titulo.tx_descricao }
         )
         .then((res: InsertResponse) => {
