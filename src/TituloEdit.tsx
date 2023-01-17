@@ -21,11 +21,14 @@ export default function TituloEdit(props: TProps) {
   // TRATANDO RETORNO COM ESC -- INÍCIO
   const navigate = useNavigate();
 
-  const escFunction = useCallback((event) => {
-    if (event.keyCode === 27)
-      // ESC Code
-      navigate('/');
-  }, [navigate]);
+  const escFunction = useCallback(
+    (event) => {
+      if (event.keyCode === 27)
+        // ESC Code
+        navigate('/');
+    },
+    [navigate]
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', escFunction, false);
@@ -61,7 +64,7 @@ export default function TituloEdit(props: TProps) {
 
   async function handleClick() {
     type TTitulo = {
-      id_titulo: string | undefined;
+      id_titulo?: string | undefined;
       tx_descricao: string;
     };
 
@@ -73,7 +76,10 @@ export default function TituloEdit(props: TProps) {
 
     if (action === 'new') {
       await axios
-        .post(url, titulo)
+        .post(
+          'http://escola-api.caprover.programadornoob.io/start_point/titulo',
+          { tx_descricao: titulo.tx_descricao }
+        )
         .then((res: InsertResponse) => {
           setError('');
           if (res.data.inserted) alert('Título inserido!');
@@ -88,16 +94,9 @@ export default function TituloEdit(props: TProps) {
       titulo.id_titulo = id;
 
       await axios
-        .put(
-          url + titulo.id_titulo?.concat('/'),
-          { tx_descricao: titulo.tx_descricao },
-          {
-            headers: {
-              accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-          }
-        )
+        .put(url + titulo.id_titulo?.concat('/'), {
+          tx_descricao: titulo.tx_descricao,
+        })
         .then((res: UpdateResponse) => {
           setError('');
           if (res.data.updated) alert('Título Alterado!');

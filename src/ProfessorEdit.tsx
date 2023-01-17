@@ -29,11 +29,14 @@ export default function ProfessorEdit(props: TProps) {
   // TRATANDO RETORNO COM ESC -- INÍCIO
   const navigate = useNavigate();
 
-  const escFunction = useCallback((event) => {
-    if (event.keyCode === 27)
-      // ESC Code
-      navigate('/');
-  }, [navigate]);
+  const escFunction = useCallback(
+    (event) => {
+      if (event.keyCode === 27)
+        // ESC Code
+        navigate('/');
+    },
+    [navigate]
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', escFunction, false);
@@ -101,7 +104,10 @@ export default function ProfessorEdit(props: TProps) {
 
     if (action === 'new') {
       await axios
-        .post(url, professor)
+        .post(
+          'http://escola-api.caprover.programadornoob.io/start_point/professor',
+          professor
+        )
         .then((res: InsertResponse) => {
           setError('');
           if (res.data.inserted) alert('Professor inserido!');
