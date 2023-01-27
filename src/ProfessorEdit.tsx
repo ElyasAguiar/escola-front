@@ -78,7 +78,7 @@ export default function ProfessorEdit(props: TProps) {
     }
 
     if (action === 'edit') getTitulo();
-  });
+  }, [action, id]);
 
   async function handleClick() {
     type TProfessor = {
